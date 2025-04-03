@@ -1,17 +1,18 @@
 import { defineConfig as defineTestConfig, mergeConfig } from "vitest/config";
 import { defineConfig } from "vite";
-import path from "path";
-import { BASE_PATH } from "./src/constants/basePath";
+import { resolve } from "path";
 
 export default mergeConfig(
   defineConfig({
-    base: BASE_PATH + "/",
+    base:
+      process.env.NODE_ENV === "production" ? "/front_5th_chapter1-2/" : "/",
     build: {
+      outDir: "dist",
       rollupOptions: {
         input: {
-          history: path.resolve(__dirname, "index.html"),
-          hash: path.resolve(__dirname, "index.hash.html"),
-          notFound: path.resolve(__dirname, "404.html"),
+          main: resolve(__dirname, "index.html"),
+          hash: resolve(__dirname, "index.hash.html"),
+          404: resolve(__dirname, "404.html"),
         },
       },
     },
