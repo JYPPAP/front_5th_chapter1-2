@@ -7,12 +7,11 @@ export default mergeConfig(
     base:
       process.env.NODE_ENV === "production" ? "/front_5th_chapter1-2/" : "/",
     build: {
-      outDir: "dist",
       rollupOptions: {
         input: {
-          main: resolve(__dirname, "index.html"),
+          history: resolve(__dirname, "index.html"),
           hash: resolve(__dirname, "index.hash.html"),
-          404: resolve(__dirname, "404.html"),
+          notFound: resolve(__dirname, "404.html"),
         },
       },
     },
